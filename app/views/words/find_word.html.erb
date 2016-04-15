@@ -1,0 +1,22 @@
+<div id='found-words'>
+	Words Found from 
+	<% @chosen_letters.each do |letter| %>
+		<span class='letter'><%=letter.upcase%></span>
+	<% end %>
+	<p><% @found_words.each do |word| %>
+		<span class='word'>
+			<%= word %>,
+		</span>
+	<% end %></p>
+</div>
+
+<div id='best-word'>
+	<p>Best Word: 
+		<% @best_words[0].each do |word| %>
+			<span class='word'><%=word%></span>
+		<% end %>
+	</p>
+	<p>Value: <%=@best_words[1]%></p>
+	<a class="submit" href="/">Reset</a>
+</div>
+

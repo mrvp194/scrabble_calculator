@@ -1,0 +1,1981 @@
+  [1m[36m (9.0ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (2.8ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateWords (20160414191622)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (33.9ms)[0m  [1mCREATE TABLE "words" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160414191622"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.8ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (2.4ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'words'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mSQL (0.5ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (6.0ms)[0m  DROP TABLE "words" CASCADE
+  [1m[36m (18.3ms)[0m  [1mCREATE TABLE "words" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35m (0.2ms)[0m  SELECT version FROM "schema_migrations"
+  [1m[36mSQL (0.3ms)[0m  [1mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (11.0ms)[0m  CREATE TABLE "words" ("id" serial primary key, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) 
+  [1m[36m (2.9ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (10.5ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36m (0.4ms)[0m  [1mSELECT version FROM "schema_migrations"[0m
+  [1m[35m (0.9ms)[0m  INSERT INTO "schema_migrations" (version) VALUES ('20160414191622')
+  [1m[36mActiveRecord::SchemaMigration Load (2.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 12:54:56 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (4.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WordsController#index as HTML
+Completed 500 Internal Server Error in 49ms (ActiveRecord: 0.0ms)
+
+Errno::ENOENT (No such file or directory - ./dictionary.txt):
+  app/controllers/words_controller.rb:13:in `initialize'
+  app/controllers/words_controller.rb:13:in `open'
+  app/controllers/words_controller.rb:13:in `index'
+
+
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (85.9ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (159.0ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (4.4ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (103.2ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (1.2ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (208.5ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 12:57:58 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (21.0ms)
+Completed 500 Internal Server Error in 402ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined local variable or method `chosen_letters' for #<#<Class:0x007f270d46b168>:0x007f270d46f538>):
+    1: <div id='letters'>
+    2: 	<form name='letter-form' action='/words/<%=chosen_letters%>/find_word' method='get'>
+    3: 		<input id='chosen-letters' type='text' value='<%=chosen_letters%>'>
+    4: 		<input class='submit' type='submit' value='Find Best Word'>
+    5: 	</form>
+  app/views/words/index.html.erb:2:in `_app_views_words_index_html_erb___2970676070155131589_69902851600660'
+
+
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (16.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (6.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (68.8ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (3.0ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (41.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (8.2ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (85.8ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 12:59:02 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (7.4ms)
+Completed 200 OK in 2790ms (Views: 2425.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-14 12:59:05 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 12:59:05 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 12:59:06 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 12:59:06 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 12:59:06 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 12:59:34 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 253ms (Views: 47.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-14 12:59:35 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 12:59:35 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 12:59:35 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 12:59:35 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 12:59:35 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:00:18 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 387ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-14 13:00:19 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:00:19 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:00:19 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:00:19 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:00:19 -0700
+
+
+Started GET "/words/atvlbsn/find_word" for 127.0.0.1 at 2016-04-14 13:00:22 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"atvlbsn"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NoMethodError (undefined method `count' for nil:NilClass):
+  app/controllers/application_controller.rb:8:in `best_word'
+  app/controllers/words_controller.rb:23:in `find_word'
+
+
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (16.0ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (8.1ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (70.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (5.8ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (51.7ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (96.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:02:15 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 125ms (Views: 111.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-14 13:02:16 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:02:16 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:02:16 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:02:16 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:02:16 -0700
+
+
+Started GET "/words/agaeeaa/find_word" for 127.0.0.1 at 2016-04-14 13:02:19 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"agaeeaa"}
+  Rendered words/find_word.html.erb within layouts/application (23.1ms)
+Completed 500 Internal Server Error in 8903ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined local variable or method `found_words' for #<#<Class:0x007f2708202cf0>:0x007f26fcb71d88>):
+    1: <div id='found-words'>
+    2: 	<%=found_words%>
+    3: </div>
+    4: 
+    5: <div id='best-word'>
+  app/views/words/find_word.html.erb:2:in `_app_views_words_find_word_html_erb___874017001261234409_69902712669460'
+
+
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.8ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (41.7ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (2.4ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (59.9ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (121.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:02:54 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 89ms (Views: 88.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-14 13:02:54 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:02:54 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:02:54 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:02:54 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:02:54 -0700
+
+
+Started GET "/words/bdraape/find_word" for 127.0.0.1 at 2016-04-14 13:02:56 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"bdraape"}
+Completed 500 Internal Server Error in 4117ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `found_words' for #<WordsController:0x007f270d1aade8>):
+  app/controllers/words_controller.rb:19:in `find_word'
+
+
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.2ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (43.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.9ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (4.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (70.1ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (131.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:03:16 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 56ms (Views: 52.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-14 13:03:17 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:03:17 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:03:17 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:03:17 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:03:17 -0700
+
+
+Started GET "/words/adrrirz/find_word" for 127.0.0.1 at 2016-04-14 13:03:19 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"adrrirz"}
+  Rendered words/find_word.html.erb within layouts/application (16.6ms)
+Completed 500 Internal Server Error in 4058ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (undefined local variable or method `found_words' for #<#<Class:0x007f26fd6606b8>:0x007f27085e2b68>):
+    1: <div id='found-words'>
+    2: 	<%=found_words%>
+    3: </div>
+    4: 
+    5: <div id='best-word'>
+  app/views/words/find_word.html.erb:2:in `_app_views_words_find_word_html_erb___874017001261234409_69902712669460'
+
+
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (15.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (3.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (33.8ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (5.8ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.9ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (51.9ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.9ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (118.4ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:03:49 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 58ms (Views: 56.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-14 13:03:50 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:03:50 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:03:50 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:03:50 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:03:50 -0700
+
+
+Started GET "/words/iboiadi/find_word" for 127.0.0.1 at 2016-04-14 13:03:51 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"iboiadi"}
+  Rendered words/find_word.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 4275ms (Views: 29.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:08:53 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 51ms (Views: 49.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-14 13:08:53 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:08:53 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:08:53 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:08:53 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:08:53 -0700
+
+
+Started GET "/words/aqaulai/find_word" for 127.0.0.1 at 2016-04-14 13:08:55 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"aqaulai"}
+  Rendered words/find_word.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 7000ms (Views: 25.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:11:49 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (3.8ms)
+Completed 200 OK in 72ms (Views: 67.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/ideiqdt/find_word?chosen_letters=ideiqdt" for 127.0.0.1 at 2016-04-14 13:11:53 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"ideiqdt"}
+  Rendered words/find_word.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 4157ms (Views: 11.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:13:06 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 58ms (Views: 56.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=aelfyti" for 127.0.0.1 at 2016-04-14 13:13:08 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"aelfyti"}
+  Rendered words/find_word.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4171ms (Views: 27.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:13:21 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 51ms (Views: 47.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=zmiegnasdfj%3F" for 127.0.0.1 at 2016-04-14 13:13:27 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"zmiegnasdfj?"}
+  Rendered words/find_word.html.erb within layouts/application (11.8ms)
+Completed 200 OK in 4836ms (Views: 35.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:14:18 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 72ms (Views: 70.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=ebvuaeo%3F" for 127.0.0.1 at 2016-04-14 13:14:23 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"ebvuaeo?"}
+  Rendered words/find_word.html.erb within layouts/application (4.9ms)
+Completed 200 OK in 4162ms (Views: 30.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:32:23 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 70ms (Views: 67.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:34:16 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 71ms (Views: 70.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e80e8f2318043e8af94dddc2adad5a4f09739a8ebb323b3ab31cd71d45fd9113.css?body=1" for 127.0.0.1 at 2016-04-14 13:34:17 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:34:17 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:34:17 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:34:17 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:34:17 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:37:47 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 60ms (Views: 57.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e51e13babd2345e9fddcd6124761f669f96e553d7e343647e6c7f2c405c117b7.css?body=1" for 127.0.0.1 at 2016-04-14 13:37:48 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:37:48 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:37:48 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:37:48 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:37:48 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:38:24 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 55ms (Views: 54.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-c4e5edfa6be78a3c3123d6aa23edf6878803236dcb3d1e94ad2822443f3ee9c7.css?body=1" for 127.0.0.1 at 2016-04-14 13:38:24 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:38:24 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:38:24 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:38:24 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:38:24 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:40:09 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 91ms (Views: 90.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-564e1e34a6f4d11d21406d31bdcea4946582ec95249bcd2a53e1105cff314925.css?body=1" for 127.0.0.1 at 2016-04-14 13:40:10 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:40:10 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:40:10 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:40:10 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:40:10 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:40:25 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 65ms (Views: 64.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-78d8252097adac43cf0bd048977a012a722bde7a093c77e76b01aa6a86882f6a.css?body=1" for 127.0.0.1 at 2016-04-14 13:40:26 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:40:26 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:40:26 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:40:26 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:40:26 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 13:41:06 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 122ms (Views: 120.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-18b5ccaf51bee6af55ce3e5a366e1ff3ffca574e9a0132b223bd5f25614b6fa3.css?body=1" for 127.0.0.1 at 2016-04-14 13:41:07 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 13:41:07 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 13:41:07 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 13:41:07 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 13:41:07 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:07:57 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (45.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (27.8ms)
+Completed 200 OK in 3763ms (Views: 3727.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e1983d5ddb0270f2041e271b6020dde93b6823a022c3dae8eb3eb34e841abbc7.css?body=1" for 127.0.0.1 at 2016-04-14 14:08:03 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:08:03 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:08:03 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:08:03 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:08:03 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:08:26 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 70ms (Views: 67.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-00c833559cdfabe275d1e01894e2ca9c80a53a1a886426af657b69ea6eb4d04f.css?body=1" for 127.0.0.1 at 2016-04-14 14:08:27 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:08:27 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:08:27 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:08:27 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:08:27 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:09:36 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 52ms (Views: 50.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e394a0fb1c0a0d5906946dd1447f9438569ab073be6d795f5b11b9a508abefff.css?body=1" for 127.0.0.1 at 2016-04-14 14:09:36 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:09:36 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:09:36 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:09:36 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:09:36 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:09:54 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 62ms (Views: 60.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-02bf976f914bb54415a9338242734afc01d22a3bf22db387630e48c3e01875ab.css?body=1" for 127.0.0.1 at 2016-04-14 14:09:55 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:09:55 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:09:55 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:09:55 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:09:55 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:10:03 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 68ms (Views: 67.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-829dc0cd69d445da7f15affc3fe4bcf543fdfa6120d5cb8c8d29459958e82f17.css?body=1" for 127.0.0.1 at 2016-04-14 14:10:03 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:10:03 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:10:03 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:10:03 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:10:03 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:13:32 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 227ms (Views: 216.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-c3064c0f1da49fe80f8a49f0acbc9b8e06f4239cda35862f17190b4e5251a256.css?body=1" for 127.0.0.1 at 2016-04-14 14:13:33 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:13:33 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:13:33 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:13:33 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:13:33 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:15:47 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 50ms (Views: 49.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-c3064c0f1da49fe80f8a49f0acbc9b8e06f4239cda35862f17190b4e5251a256.css?body=1" for 127.0.0.1 at 2016-04-14 14:15:47 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:15:47 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:15:47 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:15:47 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:15:47 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:16:12 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 56ms (Views: 54.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-c3064c0f1da49fe80f8a49f0acbc9b8e06f4239cda35862f17190b4e5251a256.css?body=1" for 127.0.0.1 at 2016-04-14 14:16:12 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:16:12 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:16:12 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:16:12 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:16:12 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:16:21 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 41ms (Views: 40.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-c3064c0f1da49fe80f8a49f0acbc9b8e06f4239cda35862f17190b4e5251a256.css?body=1" for 127.0.0.1 at 2016-04-14 14:16:22 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:16:22 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:16:22 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:16:22 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:16:22 -0700
+
+
+Started GET "/words/find_word?chosen_letters=1sdfkl%3F" for 127.0.0.1 at 2016-04-14 14:16:52 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"1sdfkl?"}
+  Rendered words/find_word.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3390ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:17:10 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (3.6ms)
+Completed 200 OK in 38ms (Views: 36.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=%3B%3A%271mkld%3F" for 127.0.0.1 at 2016-04-14 14:17:32 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>";:'1mkld?"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 3706ms (Views: 100.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=%3B%3A%271mkld%3F" for 127.0.0.1 at 2016-04-14 14:18:50 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>";:'1mkld?"}
+  Rendered words/find_word.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4062ms (Views: 30.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:19:57 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 42ms (Views: 35.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:21:49 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 42ms (Views: 40.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-87e1ff520ec100aa5b0ad5bb68c520a83f288a8ed9d999803615ad27db31775f.css?body=1" for 127.0.0.1 at 2016-04-14 14:21:49 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:21:49 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:21:49 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:21:50 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:21:50 -0700
+
+
+Started GET "/words/find_word?chosen_letters=ignease" for 127.0.0.1 at 2016-04-14 14:21:52 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"ignease"}
+  Rendered words/find_word.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5105ms (Views: 17.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:22:03 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 40ms (Views: 38.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:23:03 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 45ms (Views: 44.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e984872ae2804b31be5076d5605b8806ef81270d45c8de984136e7b2580376b8.css?body=1" for 127.0.0.1 at 2016-04-14 14:23:03 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:23:03 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:23:03 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:23:03 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:23:03 -0700
+
+
+Started GET "/words/find_word?chosen_letters=oaaiaku" for 127.0.0.1 at 2016-04-14 14:23:06 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"oaaiaku"}
+  Rendered words/find_word.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 5128ms (Views: 34.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:23:16 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 41ms (Views: 39.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:25:04 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 60ms (Views: 58.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-4e6797a8d8f8673e1fb040ac57e84372dad2ba7be1e25f6f8d33b93b235695ad.css?body=1" for 127.0.0.1 at 2016-04-14 14:25:05 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:25:05 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:25:05 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:25:05 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:25:05 -0700
+
+
+Started GET "/words/find_word?chosen_letters=pwizqoe" for 127.0.0.1 at 2016-04-14 14:25:07 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"pwizqoe"}
+  Rendered words/find_word.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5062ms (Views: 36.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:26:46 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 34ms (Views: 33.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:26:46 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 47ms (Views: 45.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e43a2c96d75dbab2c6d4a8c9bb668364d2f4ca65f21e0e9b686890ca498b713a.css?body=1" for 127.0.0.1 at 2016-04-14 14:26:47 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:27:17 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 47ms (Views: 46.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-98875b2bd3962b86b95aff5781479762a154434aa5d826419acd0fddc966c591.css?body=1" for 127.0.0.1 at 2016-04-14 14:27:17 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:27:17 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:27:17 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:27:17 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:27:17 -0700
+
+
+Started GET "/words/find_word?chosen_letters=acytiym" for 127.0.0.1 at 2016-04-14 14:27:21 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"acytiym"}
+  Rendered words/find_word.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4595ms (Views: 22.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:27:29 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 21ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=%3Fgnrugn" for 127.0.0.1 at 2016-04-14 14:27:35 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"?gnrugn"}
+  Rendered words/find_word.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 3705ms (Views: 29.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:32:49 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 23ms (Views: 22.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=taipyrw" for 127.0.0.1 at 2016-04-14 14:32:51 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"taipyrw"}
+  Rendered words/find_word.html.erb within layouts/application (1.0ms)
+Completed 200 OK in 4242ms (Views: 32.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=taipyrw" for 127.0.0.1 at 2016-04-14 14:33:27 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"taipyrw"}
+  Rendered words/find_word.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 4619ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-98875b2bd3962b86b95aff5781479762a154434aa5d826419acd0fddc966c591.css?body=1" for 127.0.0.1 at 2016-04-14 14:33:32 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:33:32 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:33:32 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:33:32 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:33:32 -0700
+
+
+Started GET "/words/find_word?chosen_letters=taipyrw" for 127.0.0.1 at 2016-04-14 14:33:42 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"taipyrw"}
+  Rendered words/find_word.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 4201ms (Views: 26.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-98875b2bd3962b86b95aff5781479762a154434aa5d826419acd0fddc966c591.css?body=1" for 127.0.0.1 at 2016-04-14 14:33:46 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:33:46 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:33:46 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:33:46 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:33:46 -0700
+
+
+Started GET "/words/find_word?chosen_letters=taipyrw" for 127.0.0.1 at 2016-04-14 14:35:37 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"taipyrw"}
+  Rendered words/find_word.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4256ms (Views: 30.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-845720535abe78caa811ad5cd2250c8874d8b3a3d560902a1c5badea4fa09aa2.css?body=1" for 127.0.0.1 at 2016-04-14 14:35:42 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:35:42 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:35:42 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:35:42 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:35:42 -0700
+
+
+Started GET "/words/find_word?chosen_letters=taipyrw" for 127.0.0.1 at 2016-04-14 14:36:26 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"taipyrw"}
+  Rendered words/find_word.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 3822ms (Views: 30.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-08a9a803f5c94433c8503c081a9e6ee556038b4acdcc7873943ba6d33cbd53fa.css?body=1" for 127.0.0.1 at 2016-04-14 14:36:30 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:36:30 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:36:30 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:36:30 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:36:30 -0700
+
+
+Started GET "/words/find_word?chosen_letters=taipyrw" for 127.0.0.1 at 2016-04-14 14:37:08 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"taipyrw"}
+  Rendered words/find_word.html.erb within layouts/application (0.5ms)
+Completed 200 OK in 4222ms (Views: 50.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-172d1c9c4ac6a6c531558636a04642bf06a45b7c6bf7ae3beff1529c4c090ab8.css?body=1" for 127.0.0.1 at 2016-04-14 14:37:13 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:37:13 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:37:13 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:37:13 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:37:13 -0700
+
+
+Started GET "/words/find_word?chosen_letters=taipyrw" for 127.0.0.1 at 2016-04-14 14:37:40 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"taipyrw"}
+  Rendered words/find_word.html.erb within layouts/application (1.9ms)
+Completed 200 OK in 4236ms (Views: 28.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-172d1c9c4ac6a6c531558636a04642bf06a45b7c6bf7ae3beff1529c4c090ab8.css?body=1" for 127.0.0.1 at 2016-04-14 14:37:44 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:37:44 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:37:44 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:37:44 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:37:44 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:38:01 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 18ms (Views: 17.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=beiujea" for 127.0.0.1 at 2016-04-14 14:38:05 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"beiujea"}
+  Rendered words/find_word.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3987ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:38:12 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=atru%3Flo" for 127.0.0.1 at 2016-04-14 14:38:14 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"atru?lo"}
+  Rendered words/find_word.html.erb within layouts/application (2.9ms)
+Completed 200 OK in 4180ms (Views: 16.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:39:00 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 34ms (Views: 33.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=nriatxo" for 127.0.0.1 at 2016-04-14 14:39:02 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"nriatxo"}
+  Rendered words/find_word.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4032ms (Views: 31.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:39:08 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=elydnaa%3F" for 127.0.0.1 at 2016-04-14 14:39:12 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"elydnaa?"}
+  Rendered words/find_word.html.erb within layouts/application (2.5ms)
+Completed 200 OK in 4150ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:39:33 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 30ms (Views: 29.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:40:24 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (8.2ms)
+Completed 200 OK in 59ms (Views: 57.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-172d1c9c4ac6a6c531558636a04642bf06a45b7c6bf7ae3beff1529c4c090ab8.css?body=1" for 127.0.0.1 at 2016-04-14 14:40:24 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:40:24 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:40:24 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:40:24 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:40:24 -0700
+
+
+Started GET "/words/find_word?chosen_letters=giretvh" for 127.0.0.1 at 2016-04-14 14:40:27 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"giretvh"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4072ms (Views: 27.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:40:35 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 44ms (Views: 43.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=trrnois" for 127.0.0.1 at 2016-04-14 14:40:37 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"trrnois"}
+  Rendered words/find_word.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 5998ms (Views: 51.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=trrnois" for 127.0.0.1 at 2016-04-14 14:42:00 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"trrnois"}
+  Rendered words/find_word.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 3889ms (Views: 28.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-dc7ff1ca866297e8a3f140e9b4022c617163cadab4ab771f87419566112a0c03.css?body=1" for 127.0.0.1 at 2016-04-14 14:42:04 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:42:04 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:42:04 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:42:04 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:42:04 -0700
+
+
+Started GET "/words/find_word?chosen_letters=trrnois" for 127.0.0.1 at 2016-04-14 14:43:04 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"trrnois"}
+  Rendered words/find_word.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4262ms (Views: 84.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-952eb483dfa4a862ad61c01205c6f336c1ea8d38832e0315dc73547a8404f8df.css?body=1" for 127.0.0.1 at 2016-04-14 14:43:09 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:43:09 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:43:09 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:43:09 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:43:09 -0700
+
+
+Started GET "/words/find_word?chosen_letters=trrnois" for 127.0.0.1 at 2016-04-14 14:43:21 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"trrnois"}
+  Rendered words/find_word.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 5108ms (Views: 45.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-952eb483dfa4a862ad61c01205c6f336c1ea8d38832e0315dc73547a8404f8df.css?body=1" for 127.0.0.1 at 2016-04-14 14:43:27 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:43:27 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:43:27 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:43:27 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:43:27 -0700
+
+
+Started GET "/words/find_word?chosen_letters=trrnois" for 127.0.0.1 at 2016-04-14 14:44:06 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"trrnois"}
+  Rendered words/find_word.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4383ms (Views: 39.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-d51f3acd3384aa85b8954dadfb74d11fafe1df26194b0e7be11acf684c7d2caf.css?body=1" for 127.0.0.1 at 2016-04-14 14:44:11 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:44:11 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:44:11 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:44:11 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:44:11 -0700
+
+
+Started GET "/words/find_word?chosen_letters=trrnois" for 127.0.0.1 at 2016-04-14 14:44:39 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"trrnois"}
+  Rendered words/find_word.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 4160ms (Views: 74.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-02d95fbf09392f4fbdec3fa20923fad972432ee90e8144fff3ab6c18d51de259.css?body=1" for 127.0.0.1 at 2016-04-14 14:44:43 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:44:43 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:44:44 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:44:44 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:44:44 -0700
+
+
+Started GET "/words/find_word?chosen_letters=trrnois" for 127.0.0.1 at 2016-04-14 14:45:02 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"trrnois"}
+  Rendered words/find_word.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 3721ms (Views: 37.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-9a93f3595a0c6bfdf7be01f1e4e955268217bcb0d4811f1700da91ec9956b573.css?body=1" for 127.0.0.1 at 2016-04-14 14:45:06 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:06 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:06 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:06 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:06 -0700
+
+
+Started GET "/words/find_word?chosen_letters=trrnois" for 127.0.0.1 at 2016-04-14 14:45:16 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"trrnois"}
+  Rendered words/find_word.html.erb within layouts/application (0.3ms)
+Completed 200 OK in 4011ms (Views: 27.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-094697991385dee9b90f6b2393fe96291cd17fb8b171f229911c149405ba7006.css?body=1" for 127.0.0.1 at 2016-04-14 14:45:20 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:20 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:20 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:20 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:20 -0700
+
+
+Started GET "/words/find_word?chosen_letters=trrnois" for 127.0.0.1 at 2016-04-14 14:45:29 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"trrnois"}
+  Rendered words/find_word.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 3963ms (Views: 25.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-c839bac450c97b9226822fff463380bfe67ef540c58a01d5200402f0301b82c0.css?body=1" for 127.0.0.1 at 2016-04-14 14:45:33 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:34 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:34 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:34 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:34 -0700
+
+
+Started GET "/words/find_word?chosen_letters=trrnois" for 127.0.0.1 at 2016-04-14 14:45:54 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"trrnois"}
+  Rendered words/find_word.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 3839ms (Views: 15.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-d51f3acd3384aa85b8954dadfb74d11fafe1df26194b0e7be11acf684c7d2caf.css?body=1" for 127.0.0.1 at 2016-04-14 14:45:58 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:58 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:58 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:58 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 14:45:58 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:46:10 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 26ms (Views: 24.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=%3Foijormvoyr" for 127.0.0.1 at 2016-04-14 14:46:16 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"?oijormvoyr"}
+  Rendered words/find_word.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 4515ms (Views: 28.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 14:46:26 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 31ms (Views: 29.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=eycradd" for 127.0.0.1 at 2016-04-14 16:52:58 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"eycradd"}
+  Rendered words/find_word.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 13299ms (Views: 42.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 16:55:53 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 22ms (Views: 20.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=esoatde" for 127.0.0.1 at 2016-04-14 17:01:26 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"esoatde"}
+  Rendered words/find_word.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 3757ms (Views: 38.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 17:01:39 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 16ms (Views: 14.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=faiemmi" for 127.0.0.1 at 2016-04-14 17:01:40 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"faiemmi"}
+  Rendered words/find_word.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 3969ms (Views: 24.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 17:01:48 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 15ms (Views: 13.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=nssuaoz" for 127.0.0.1 at 2016-04-14 17:05:02 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"nssuaoz"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4009ms (Views: 24.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 17:06:43 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 21ms (Views: 19.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=deideoe" for 127.0.0.1 at 2016-04-14 17:06:45 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"deideoe"}
+  Rendered words/find_word.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 3898ms (Views: 24.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 17:07:02 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 21ms (Views: 19.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=feldjly" for 127.0.0.1 at 2016-04-14 17:08:55 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"feldjly"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 3990ms (Views: 21.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 17:10:21 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 21ms (Views: 20.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=olewqso" for 127.0.0.1 at 2016-04-14 17:10:22 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"olewqso"}
+  Rendered words/find_word.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4117ms (Views: 37.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=olewqso" for 127.0.0.1 at 2016-04-14 17:12:15 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"olewqso"}
+  Rendered words/find_word.html.erb within layouts/application (1.2ms)
+Completed 500 Internal Server Error in 4040ms (ActiveRecord: 0.0ms)
+
+SyntaxError (/home/mrvp194/Desktop/scrabble/scrabble/app/views/words/find_word.html.erb:19: syntax error, unexpected keyword_ensure, expecting keyword_end
+/home/mrvp194/Desktop/scrabble/scrabble/app/views/words/find_word.html.erb:21: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/views/words/find_word.html.erb:19: syntax error, unexpected keyword_ensure, expecting keyword_end
+  app/views/words/find_word.html.erb:21: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (9.9ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (157.6ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (239.6ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (137.6ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (203.9ms)
+
+
+Started GET "/words/find_word?chosen_letters=olewqso" for 127.0.0.1 at 2016-04-14 17:12:44 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"olewqso"}
+  Rendered words/find_word.html.erb within layouts/application (0.9ms)
+Completed 200 OK in 4068ms (Views: 24.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-d51f3acd3384aa85b8954dadfb74d11fafe1df26194b0e7be11acf684c7d2caf.css?body=1" for 127.0.0.1 at 2016-04-14 17:12:48 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 17:12:48 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 17:12:48 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 17:12:49 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 17:12:49 -0700
+
+
+Started GET "/words/find_word?chosen_letters=olewqso" for 127.0.0.1 at 2016-04-14 17:13:09 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"olewqso"}
+  Rendered words/find_word.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 3926ms (Views: 17.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-d51f3acd3384aa85b8954dadfb74d11fafe1df26194b0e7be11acf684c7d2caf.css?body=1" for 127.0.0.1 at 2016-04-14 17:13:13 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 17:13:13 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 17:13:13 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 17:13:13 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 17:13:13 -0700
+
+
+Started GET "/words/find_word?chosen_letters=olewqso" for 127.0.0.1 at 2016-04-14 17:13:47 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"olewqso"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4153ms (Views: 44.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-d886207b19d1db91f847263313c526006d985cd806bbc91183436a3899f0117c.css?body=1" for 127.0.0.1 at 2016-04-14 17:13:52 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 17:13:52 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 17:13:52 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 17:13:52 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 17:13:52 -0700
+
+
+Started GET "/words/find_word?chosen_letters=olewqso" for 127.0.0.1 at 2016-04-14 17:15:49 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"olewqso"}
+  Rendered words/find_word.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 4612ms (Views: 38.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-d886207b19d1db91f847263313c526006d985cd806bbc91183436a3899f0117c.css?body=1" for 127.0.0.1 at 2016-04-14 17:15:54 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 17:15:54 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 17:15:54 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 17:15:54 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 17:15:54 -0700
+
+
+Started GET "/words/find_word?chosen_letters=olewqso" for 127.0.0.1 at 2016-04-14 17:23:01 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"olewqso"}
+  Rendered words/find_word.html.erb within layouts/application (4.4ms)
+Completed 500 Internal Server Error in 4052ms (ActiveRecord: 0.0ms)
+
+ActionView::Template::Error (wrong number of arguments (1 for 0)):
+    12: 
+    13: <div id='best-word'>
+    14: 	<p>Best Word: <%=@best_word%></p>
+    15: 	<p>Value: <%=@best_word.max(5)%></p>
+    16: 	<a class="submit" href="/">Reset</a>
+    17: </div>
+  app/views/words/find_word.html.erb:15:in `max'
+  app/views/words/find_word.html.erb:15:in `_app_views_words_find_word_html_erb___144043190757085103_69974249141840'
+
+
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.1ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/actionpack-4.2.5.1/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (30.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (6.0ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (34.0ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (3.2ms)
+  Rendered /home/mrvp194/.rvm/gems/ruby-2.0.0-p643/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (67.4ms)
+
+
+Started GET "/words/find_word?chosen_letters=olewqso" for 127.0.0.1 at 2016-04-14 17:44:53 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"olewqso"}
+  Rendered words/find_word.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 5192ms (Views: 37.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-d886207b19d1db91f847263313c526006d985cd806bbc91183436a3899f0117c.css?body=1" for 127.0.0.1 at 2016-04-14 17:44:59 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 17:44:59 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 17:44:59 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 17:44:59 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 17:44:59 -0700
+
+
+Started GET "/words/find_word?chosen_letters=olewqso" for 127.0.0.1 at 2016-04-14 17:45:30 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"olewqso"}
+  Rendered words/find_word.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 4126ms (Views: 29.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-82cd90fec29d80178290f3eecd3044152262b68d88f7ef6edb4a75fea5b15465.css?body=1" for 127.0.0.1 at 2016-04-14 17:45:35 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 17:45:35 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 17:45:35 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 17:45:35 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 17:45:35 -0700
+
+
+Started GET "/words/find_word?chosen_letters=olewqso" for 127.0.0.1 at 2016-04-14 17:45:52 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"olewqso"}
+  Rendered words/find_word.html.erb within layouts/application (0.4ms)
+Completed 200 OK in 4294ms (Views: 28.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e277fac9e000c1e23cfbeff42f5cd8f1d7914f922a237520d4db0e82a4c5641a.css?body=1" for 127.0.0.1 at 2016-04-14 17:45:57 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 17:45:57 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 17:45:57 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 17:45:57 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 17:45:57 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 17:46:11 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=eimcaea" for 127.0.0.1 at 2016-04-14 17:46:12 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"eimcaea"}
+  Rendered words/find_word.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 4058ms (Views: 19.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 17:46:24 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 11ms (Views: 10.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=iersipa" for 127.0.0.1 at 2016-04-14 17:46:26 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"iersipa"}
+  Rendered words/find_word.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 4067ms (Views: 25.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 17:57:25 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (1.2ms)
+Completed 200 OK in 441ms (Views: 428.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=tlzggno" for 127.0.0.1 at 2016-04-14 17:57:28 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"tlzggno"}
+  Rendered words/find_word.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 4976ms (Views: 29.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 17:57:35 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 18ms (Views: 17.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:23:53 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 34ms (Views: 33.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-e277fac9e000c1e23cfbeff42f5cd8f1d7914f922a237520d4db0e82a4c5641a.css?body=1" for 127.0.0.1 at 2016-04-14 18:23:53 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 18:23:53 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 18:23:53 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 18:23:53 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 18:23:53 -0700
+
+
+Started GET "/words/find_word?chosen_letters=yrege%3Fc" for 127.0.0.1 at 2016-04-14 18:23:55 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"yrege?c"}
+  Rendered words/find_word.html.erb within layouts/application (1.3ms)
+Completed 200 OK in 4015ms (Views: 18.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:24:08 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=antuiih" for 127.0.0.1 at 2016-04-14 18:24:10 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"antuiih"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 3946ms (Views: 22.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:28:34 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=aohnioi" for 127.0.0.1 at 2016-04-14 18:28:42 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"aohnioi"}
+  Rendered words/find_word.html.erb within layouts/application (1.1ms)
+Completed 200 OK in 3882ms (Views: 25.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:29:00 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=ghgh%3Fhjtarli" for 127.0.0.1 at 2016-04-14 18:29:18 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"ghgh?hjtarli"}
+  Rendered words/find_word.html.erb within layouts/application (3.5ms)
+Completed 200 OK in 4278ms (Views: 28.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=ghgh%3Fhjtarli" for 127.0.0.1 at 2016-04-14 18:49:17 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"ghgh?hjtarli"}
+  Rendered words/find_word.html.erb within layouts/application (3.1ms)
+Completed 200 OK in 5113ms (Views: 34.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-ec8d1fa252a376a07e00b6f8422ac0e01edfb72bbe5695d569cb55094fdc4ad0.css?body=1" for 127.0.0.1 at 2016-04-14 18:49:23 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 18:49:23 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 18:49:23 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 18:49:23 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 18:49:23 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:49:28 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 24ms (Views: 23.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=dtejrgm" for 127.0.0.1 at 2016-04-14 18:49:30 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"dtejrgm"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4048ms (Views: 12.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:49:37 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=orxtitg" for 127.0.0.1 at 2016-04-14 18:49:38 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"orxtitg"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4130ms (Views: 17.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:49:46 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 24ms (Views: 23.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=rvaafyh" for 127.0.0.1 at 2016-04-14 18:49:47 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"rvaafyh"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 3992ms (Views: 20.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:49:55 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=xfaaprj" for 127.0.0.1 at 2016-04-14 18:50:07 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"xfaaprj"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4044ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:50:13 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 12ms (Views: 10.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=qzayobs" for 127.0.0.1 at 2016-04-14 18:50:14 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"qzayobs"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4109ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:50:25 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 23ms (Views: 22.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=nlaawri%3F" for 127.0.0.1 at 2016-04-14 18:50:28 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"nlaawri?"}
+  Rendered words/find_word.html.erb within layouts/application (4.4ms)
+Completed 200 OK in 4162ms (Views: 26.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:50:40 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 21ms (Views: 19.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=%3Fkiuikjfduezeai" for 127.0.0.1 at 2016-04-14 18:50:48 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"?kiuikjfduezeai"}
+  Rendered words/find_word.html.erb within layouts/application (3.7ms)
+Completed 200 OK in 5678ms (Views: 14.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=%3Fkiuikjfduezeai" for 127.0.0.1 at 2016-04-14 18:53:35 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"?kiuikjfduezeai"}
+  Rendered words/find_word.html.erb within layouts/application (6.0ms)
+Completed 200 OK in 7222ms (Views: 55.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/assets/application.self-ec8d1fa252a376a07e00b6f8422ac0e01edfb72bbe5695d569cb55094fdc4ad0.css?body=1" for 127.0.0.1 at 2016-04-14 18:53:43 -0700
+
+
+Started GET "/assets/jquery.self-660adc51e0224b731d29f575a6f1ec167ba08ad06ed5deca4f1e8654c135bf4c.js?body=1" for 127.0.0.1 at 2016-04-14 18:53:43 -0700
+
+
+Started GET "/assets/jquery_ujs.self-e87806d0cf4489aeb1bb7288016024e8de67fd18db693fe026fe3907581e53cd.js?body=1" for 127.0.0.1 at 2016-04-14 18:53:43 -0700
+
+
+Started GET "/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" for 127.0.0.1 at 2016-04-14 18:53:43 -0700
+
+
+Started GET "/assets/application.self-3b8dabdc891efe46b9a144b400ad69e37d7e5876bdc39dee783419a69d7ca819.js?body=1" for 127.0.0.1 at 2016-04-14 18:53:43 -0700
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:53:56 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 25ms (Views: 24.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=juexaho%3F%3Fasdfje" for 127.0.0.1 at 2016-04-14 18:54:01 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"juexaho??asdfje"}
+  Rendered words/find_word.html.erb within layouts/application (48.6ms)
+Completed 200 OK in 5381ms (Views: 146.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:54:40 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=aahezro" for 127.0.0.1 at 2016-04-14 18:54:41 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"aahezro"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4263ms (Views: 12.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:54:50 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 13ms (Views: 11.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/words/find_word?chosen_letters=ddieqos" for 127.0.0.1 at 2016-04-14 18:54:51 -0700
+Processing by WordsController#find_word as HTML
+  Parameters: {"chosen_letters"=>"ddieqos"}
+  Rendered words/find_word.html.erb within layouts/application (0.2ms)
+Completed 200 OK in 4248ms (Views: 17.1ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2016-04-14 18:54:58 -0700
+Processing by WordsController#index as HTML
+  Rendered words/index.html.erb within layouts/application (0.1ms)
+Completed 200 OK in 12ms (Views: 11.5ms | ActiveRecord: 0.0ms)

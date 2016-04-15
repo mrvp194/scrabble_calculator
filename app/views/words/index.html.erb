@@ -1,0 +1,9 @@
+<div id='letters'>
+	<p>Input the letters you would like to test or use the randomly generated ones below</p>
+	<p>Use '?' to add a blank letter - ex: asdfle?</p>
+	
+	<form name='letter-form' action='/words/find_word' method='get'>
+		<%= text_field_tag('chosen_letters', @chosen_letters.join) %>
+		<input class='submit' type='submit' value='Find Best Word'>
+	</form>
+</div>
