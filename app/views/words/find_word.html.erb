@@ -3,11 +3,15 @@
 	<% @chosen_letters.each do |letter| %>
 		<span class='letter'><%=letter.upcase%></span>
 	<% end %>
-	<p><% @found_words.each do |word| %>
-		<span class='word'>
-			<%= word %>,
-		</span>
-	<% end %></p>
+	<p>
+		<% @found_words.each do |word| %>
+			<% unless word == @found_words.last %>
+				<span class='word'><%= word %>,</span>
+			<% else %>
+				<span class='word'><%= word %></span>
+			<% end %>
+		<% end %>
+	</p>
 </div>
 
 <div id='best-word'>
