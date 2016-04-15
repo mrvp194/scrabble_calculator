@@ -10,20 +10,18 @@ class ApplicationController < ActionController::Base
 		words = File.open("#{Rails.root}/app/assets/words/dictionary.txt")
 		sorted_words = []
 
-		# words.readlines.each do |word|
-		# 	sorted_words << word.chomp
-		# end
+
 		found_words = words.readlines.keep_if do |word|
-	        word = word.chomp.split(//)
+      word = word.chomp.split(//)
 
-	        letter_array.each do |letter|
-				if word.index(letter)
-					word.delete_at word.index(letter)
-				end
-	        end
-
+        letter_array.each do |letter|
+					if word.index(letter)
+						word.delete_at word.index(letter)
+					end
+        end
 			word.length <= blanks
 		end
+
 		blanks.times do |blank|
 			letter_array << '?'
 		end
